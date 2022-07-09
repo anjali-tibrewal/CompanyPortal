@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <div class="hero_area">
+    <!-- header section strats -->
+<app-header></app-header>
+    <!-- slider section -->
+    <section class=" slider_section ">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div class="indicator_box">
+          <div>
+            <span>
+              01/
+            </span>
+          </div>
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">01</li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1">02</li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2">03</li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3">04</li>
+          </ol>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-4 offset-md-1">
+                  <div class="detail-box">
+                    <h1>
+                      Find a <br>
+                      Perfect job <br>
+                      for you
+                    </h1>
+                    <div>
+                      <a href="">
+                        Read More
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 ">
+                  <div class="img-box">
+                    <img src="../../assets/images/slider-img.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item ">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-4 offset-md-1">
+                  <div class="detail-box">
+                    <h1>
+                      Find a <br>
+                      Perfect job <br>
+                      for you
+                    </h1>
+                    <div>
+                      <a href="">
+                        Read More
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 ">
+                  <div class="img-box">
+                    <img src="../../assets/images/slider-img.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item ">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-4 offset-md-1">
+                  <div class="detail-box">
+                    <h1>
+                      Find a <br>
+                      Perfect job <br>
+                      for you
+                    </h1>
+                    <div>
+                      <a href="">
+                        Read More
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 ">
+                  <div class="img-box">
+                    <img src="../../assets/images/slider-img.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item ">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-4 offset-md-1">
+                  <div class="detail-box">
+                    <h1>
+                      Find a <br>
+                      Perfect job <br>
+                      for you
+                    </h1>
+                    <div>
+                      <a href="">
+                        Read More
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 ">
+                  <div class="img-box">
+                    <img src="../../assets/images/slider-img.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+    </section>
+    <!-- end slider section -->
+
+
+    <!-- find section -->
+    <section class="find_section">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-8 offset-lg-1 col-md-9 offset-md-1">
+            <form [formGroup] = "form">
+              <div class="form_container">
+                <div class="box b-1">
+                  <input type="text" class="form-control" placeholder="Job Title or Keywords" 
+                  (click) = "getJobs($event)" name="jobDesc" id = "jobDesc" formControlName = "jobDesc" list = "dynamicJobNames">
+                  <datalist id = "dynamicJobNames">
+                    <option *ngFor = "let item of jobList" [value] = "item">{{item}}</option>
+                  </datalist>
+                </div>
+                <div class="box b-2">
+                  <input type="text" class="form-control" placeholder="Where" 
+                  (click) = "getLocations($event)" name="jobLocation" id = "jobLocation" formControlName = "jobLocation" list = "dynamicJobLocations">
+                  <datalist id = "dynamicJobLocations">
+                    <option *ngFor = "let item of locationList" [value] = "item">{{item}}</option>
+                  </datalist>
+                </div>
+                <div class="btn-box">
+                  <button type="submit" class="" (click) = "searchJobs()">
+                    Search
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- end find section -->
+     <section class="featured-job-area feature-padding">
+      <div class="container">
+        <div class="heading_container">
+          <h2>
+            Recommended jobs <br>
+            <span>
+              15000+ Job Available For you
+            </span>
+          </h2>
+        </div>
+       
+        <div class="row justify-content-center"  *ngFor = "let item of openJobsList">
+              <div class="col-xl-10">
+                  <!-- single-job-content -->
+                  <div class="single-job-items mb-30">
+                    <div class="job-items">
+                        
+                        <div class="job-tittle">
+                            <a href="" routerLink = "/jobDetails"><h4>{{item.jobDesc}}</h4></a>
+                            <ul>
+                                <li>{{item.companyName}}</li>
+                                <li><i class="fas fa-map-marker-alt"></i>{{item.jobLocation}}</li>
+                                <li>{{item.salaryOffered}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="items-link f-right">
+                        <a href="" routerLink = "/apply-now">APPLY NOW</a>
+                        <span>{{item.postedDate}}</span>
+                    </div>
+                </div>                
+            </div>
+        </div>
+        <div class="items-link" style = "width: 200px; align-items: center;">
+          <a href="/jobs">
+            See More
+          </a>
+        </div>
+      </div>
+    </section> 
+    <!-- end job section -->
+    <app-company-info></app-company-info>
+    <app-footer></app-footer>
+  </div>
+  <script src="../../assets/js/jquery-3.4.1.min.js"></script>
+  <script src="../../assets/js/bootstrap.js"></script>
+</body>
+
+</html>

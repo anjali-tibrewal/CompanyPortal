@@ -1,0 +1,23 @@
+/* footer section*/
+.footer_section {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    background-color: #ffffff;
+    padding: 20px;
+  }
+  
+  .footer_section p {
+    color: #292929;
+    margin: 0;
+    text-align: center;
+  }
+  
+  .footer_section a {
+    color: #292929;
+  }
+  
+  /* end footer section*/

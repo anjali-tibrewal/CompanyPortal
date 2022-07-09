@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Job Application Form</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="hero_area">
+        <!-- header section strats -->
+        <app-header></app-header>
+        <!-- end header section -->
+      </div>
+    <div class="testbox">
+        <form [formGroup]="form">
+            <div class="banner">
+                <h1>Job Application Form</h1>
+            </div>
+            <p class="top-info">Thank you for your interest in working with us. Please check below for available job
+                opportunities that meet your criteria and send your application by filling out the Job Application Form.
+            </p>
+            <div class="item">
+                <p>Name<span class="required">*</span></p>
+                <div class="name-item">
+                    <input class="form-control" type="text" name="firstName" placeholder="First"
+                        formControlName="firstName" required />
+                    <span
+                        *ngIf="form.controls['firstName'].invalid 
+                                              && (form.controls['firstName'].dirty || form.controls['firstName'].touched)">
+                        <div *ngIf="form.controls['firstName'].errors.required" class="error">
+                            Kindly enter First Name.
+                        </div>
+                    </span>
+                    <input class="form-control" type="text" name="lastName" placeholder="Last"
+                        formControlName="lastName" required />
+                    <span class="error"
+                        *ngIf="form.controls['lastName'].invalid 
+                                                  && (form.controls['lastName'].dirty || form.controls['lastName'].touched)">
+                        <div *ngIf="form.controls['lastName'].errors.required" class="error">
+                            Kindly enter First Name.
+                        </div>
+                    </span>
+                </div>
+            </div>
+            <div class="item">
+                <p>Date of birth<span class="required">*</span></p>
+                <div class="name-item">
+                    <input class="form-control" type="date" name="dob" placeholder="DD/MM/YYYY" formControlName="dob"
+                        required />
+                </div>
+                <span *ngIf="form.controls['dob'].invalid 
+                                      && (form.controls['dob'].dirty || form.controls['dob'].touched)">
+                    <div *ngIf="form.controls['dob'].errors.required" class="error">
+                        Kindly enter Date of Birth.
+                    </div>
+                </span>
+            </div>
+            <div class="question">
+                <p>Gender<span class="required">*</span></p>
+                <div class="question-answer">
+                    <div>
+                        <input class="form-control" type="radio" value="M" id="radio_1" name="gender"
+                            formControlName="gender" required />
+                        <label for="radio_1" class="radio"><span>Male</span></label>
+                        <input class="form-control" type="radio" value="F" id="radio_2" name="gender"
+                            formControlName="gender" required />
+                        <label for="radio_2" class="radio"><span>Female</span></label>
+                        <input class="form-control" type="radio" value="O" id="radio_3" name="gender"
+                            formControlName="gender" required />
+                        <label for="radio_3" class="radio"><span>Other</span></label>
+                    </div>
+                </div>
+                <span *ngIf="form.controls['gender'].invalid 
+                                      && (form.controls['gender'].dirty || form.controls['gender'].touched)">
+                    <div *ngIf="form.controls['gender'].errors.required" class="error">
+                        Kindly choose a gender.
+                    </div>
+                </span>
+            </div>
+            <div class="contact-item">
+                <div class="item">
+                    <p>Email<span class="required">*</span></p>
+                    <input class="form-control" type="text" name="email" required formControlName="email"
+                        pattern="^[A-Za-z0-9._%+-]+@[A-Za-z]+\.[A-Za-z]{2,3}(\.[A-Za-z]{2,3})?$" />
+                    <span *ngIf="form.controls['email'].invalid 
+                                      && (form.controls['email'].dirty || form.controls['email'].touched)">
+                        <div *ngIf="form.controls['email'].errors.required" class="error">
+                            Kindly enter Email address.
+                        </div>
+                        <div *ngIf="form.controls['email'].errors.pattern" class="error">
+                            Please enter a valid Email address
+                        </div>
+                    </span>
+                </div>
+                <div class="item">
+                    <p>Phone<span class="required">*</span></p>
+                    <input class="form-control" type="text" name="phone" required formControlName="phone"
+                        pattern="^[0-9]{10}" maxlength="10" />
+                    <span *ngIf="form.controls['phone'].invalid 
+                                          && (form.controls['phone'].dirty || form.controls['phone'].touched)">
+                        <div *ngIf="form.controls['phone'].errors.required" class="error">
+                            Kindly enter phone number.
+                        </div>
+                        <div *ngIf="form.controls['email'].errors.pattern" class="error">
+                            Please enter a valid phone number.
+                        </div>
+                    </span>
+                </div>
+            </div>
+            <div class="contact-item">
+                <div class="item">
+                    <p>Address<span class="required">*</span></p>
+                    <input class="form-control" type="text" name="addrLine1" placeholder="Street Address"
+                        formControlName="addrLine1" required />
+                    <span *ngIf="form.controls['addrLine1'].invalid 
+                                      && (form.controls['addrLine1'].dirty || form.controls['addrLine1'].touched)">
+                        <div *ngIf="form.controls['addrLine1'].errors.required" class="error">
+                            Kindly enter Street Address.
+                        </div>
+                    </span>
+                    <input type="text" name="addrLine2" placeholder="Street Address Line2"
+                        formControlName="addrLine2" />
+                    <input type="text" name="addrCity" placeholder="City" formControlName="addrCity" required />
+                    <span *ngIf="form.controls['addrCity'].invalid 
+                                      && (form.controls['addrCity'].dirty || form.controls['addrCity'].touched)">
+                        <div *ngIf="form.controls['addrCity'].errors.required" class="error">
+                            Kindly enter City.
+                        </div>
+                    </span>
+                    <input type="text" name="addrState" placeholder="State/Province" formControlName="addrState"
+                        required />
+                    <span *ngIf="form.controls['addrState'].invalid 
+                                      && (form.controls['addrState'].dirty || form.controls['addrState'].touched)">
+                        <div *ngIf="form.controls['addrState'].errors.required" class="error">
+                            Kindly enter State/Province.
+                        </div>
+                    </span>
+                    <input type="text" name="addrZip" placeholder="Zip" formControlName="addrZip" required />
+                    <span *ngIf="form.controls['addrZip'].invalid 
+                                      && (form.controls['addrZip'].dirty || form.controls['addrZip'].touched)">
+                        <div *ngIf="form.controls['addrZip'].errors.required" class="error">
+                            Kindly enter Zip code.
+                        </div>
+                    </span>
+                </div>
+
+            </div>
+            <div>
+
+            </div>
+
+            <div class="position-item">
+                <div class="item">
+                    <p>What position are you applying for?<span class="required">*</span></p>
+                    <select required formControlName="positionApplied" name="positionApplied">
+                        <option value="1">Select</option>
+                        <option value="Java Developer">Java Developer</option>
+                        <option value="Full Stack Developer">Full Stack Developer</option>
+                        <option value="Graphic designer">Graphic designer</option>
+                        <option value="Accountant">Accountant</option>
+                        <option value="Human Resources">Human Resources</option>
+                    </select>
+                    <span
+                        *ngIf="form.controls['positionApplied'].invalid 
+                                      && (form.controls['positionApplied'].dirty || form.controls['positionApplied'].touched)">
+                        <div *ngIf="showValidations || form.controls['positionApplied'].errors.required" class="error">
+                            Kindly select an option.
+                        </div>
+                    </span>
+                </div>
+                <div class="item">
+                    <p>Available start date<span class="required">*</span></p>
+                    <input type="date" name="availableStartDate" formControlName="availableStartDate" required />
+                    <i class="fas fa-calendar-alt"></i>
+                    <span *ngIf="form.controls['availableStartDate'].invalid 
+                    && (form.controls['availableStartDate'].dirty || form.controls['availableStartDate'].touched)">
+                        <div *ngIf="form.controls['availableStartDate'].errors.required" class="error">
+                            Kindly select a date.
+                        </div>
+                    </span>
+                </div>
+            </div>
+            <div class="question">
+                <p>What is your current employment status?<span class="required">*</span></p>
+                <div class="question-answer">
+                    <div>
+                        <input type="radio" value="Employed" id="radio_4" name="currentEmploymentStatus" required
+                            formControlName="currentEmploymentStatus" />
+                        <label for="radio_4" class="radio"><span>Employed</span></label>
+                    </div>
+                    <div>
+                        <input type="radio" value="Self_Employed" id="radio_5" name="currentEmploymentStatus" required
+                            formControlName="currentEmploymentStatus" />
+                        <label for="radio_5" class="radio"><span>Self-Employed</span></label>
+                    </div>
+                    <div>
+                        <input type="radio" value="Unemployed" id="radio_6" name="currentEmploymentStatus" required
+                            formControlName="currentEmploymentStatus" />
+                        <label for="radio_6" class="radio"><span>Unemployed</span></label>
+                    </div>
+                    <div>
+                        <input type="radio" value="Student" id="radio_7" name="currentEmploymentStatus" required
+                            formControlName="currentEmploymentStatus" />
+                        <label for="radio_7" class="radio"><span>Student</span></label>
+                    </div>
+                </div>
+                <span
+                    *ngIf="form.controls['currentEmploymentStatus'].invalid 
+                                      && (form.controls['currentEmploymentStatus'].dirty || form.controls['currentEmploymentStatus'].touched)">
+                    <div *ngIf="form.controls['currentEmploymentStatus'].errors.required" class="error">
+                        Kindly select an option.
+                    </div>
+                </span>
+            </div>
+            <div class="item">
+                <p>Current CTC<span class="required"></span></p>
+                <div class="name-item">
+                    <input type="text" name="currentCtc" placeholder="Current CTC" formControlName="currentCtc" />
+                </div>
+                <p>Expected CTC<span class="required">*</span></p>
+                <div class="name-item">
+                    <input type="text" name="expectedCtc" placeholder="Expected CTC" required
+                        formControlName="expectedCtc" />
+                </div>
+                <span *ngIf="form.controls['expectedCtc'].invalid 
+                && (form.controls['expectedCtc'].dirty || form.controls['expectedCtc'].touched)">
+                    <div *ngIf="form.controls['expectedCtc'].errors.required" class="error">
+                        Kindly mention the expected CTC.
+                    </div>
+                </span>
+            </div>
+            <div class="item">
+                <p>Notice Period in Months<span class="required"></span></p>
+                <div class="name-item">
+                    <input type="text" name="noticePeriod" placeholder="Notice Period"
+                        formControlName="noticePeriod" />
+                </div>
+            </div>
+            <div class="item">
+                <p>Submit your resume by providing your resume URL or attach file:</p>
+                <input type="text" name="providing" />
+                <input type="file" name="file" accept="file/*">
+            </div>
+            <div>
+                <h3>Skills & Trainings</h3>
+                <div class="item">
+                    <p>Describe your skills<span class="required">*</span></p>
+                    <div class="skills-item">
+                        <textarea name="skills" required formControlName="skills"></textarea>
+                    </div>
+                    <span *ngIf="form.controls['skills'].invalid 
+                && (form.controls['skills'].dirty || form.controls['skills'].touched)">
+                        <div *ngIf="form.controls['skills'].errors.required" class="error">
+                            Kindly mention your skills.
+                        </div>
+                    </span>
+                </div>
+                <div class="item">
+                    <p>Trainings & Certifications<span class="required">*</span></p>
+                    <div class="skills-item">
+                        <textarea name="trainings" required formControlName="trainings"></textarea>
+                    </div>
+                    <span *ngIf="form.controls['trainings'].invalid 
+                && (form.controls['trainings'].dirty || form.controls['trainings'].touched)">
+                        <div *ngIf="form.controls['trainings'].errors.required" class="error">
+                            Kindly mention your Trainings & Certifications.
+                        </div>
+                    </span>
+                </div>
+            </div>
+            <div>
+                <h3>References</h3>
+                <div class="question">
+                    <p>Would you like to list references</p>
+                    <div class="question-answer">
+                        <div>
+                            <input type="radio" value="Y" id="radio_8" name="referenceInd"
+                                formControlName="referenceInd" />
+                            <label for="radio_8" class="radio"><span>Yes</span></label>
+                        </div>
+                        <div>
+                            <input type="radio" value="N" id="radio_9" name="referenceInd"
+                                formControlName="referenceInd" />
+                            <label for="radio_9" class="radio"><span>No</span></label>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <h6>Reference 1</h6>
+                        <div class="item">
+                            <p>Name<span class="required"></span></p>
+                            <div class="name-item">
+                                <input type="text" name="reference1FirstName" placeholder="Reference1 First Name"
+                                    formControlName="reference1FirstName" />
+                                <input type="text" name="reference1LastName" placeholder="Reference1 Last Name"
+                                    formControlName="reference1LastName" />
+                            </div>
+                        </div>
+                        <div class="item">
+                            <p>Date of birth<span class="required"></span></p>
+                            <div class="name-item">
+                                <input type="date" name="reference1Dob" placeholder="DD/MM/YYYY"
+                                    formControlName="reference1Dob" />
+                            </div>
+                        </div>
+                        <div class="question">
+                            <p>Gender<span class="required"></span></p>
+                            <div class="question-answer">
+                                <div>
+                                    <input type="radio" value="M" id="radio_10" name="reference1Gender"
+                                        formControlName="reference1Gender" />
+                                    <label for="radio_10" class="radio"><span>Male</span></label>
+                                    <input type="radio" value="F" id="radio_11" name="reference1Gender"
+                                        formControlName="reference1Gender" />
+                                    <label for="radio_11" class="radio"><span>Female</span></label>
+                                    <input type="radio" value="O" id="radio_12" name="reference1Gender"
+                                        formControlName="reference1Gender" />
+                                    <label for="radio_12" class="radio"><span>Other</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="item">
+                                <p>Email<span class="required"></span></p>
+                                <input type="text" name="reference1Email" formControlName="reference1Email" />
+                            </div>
+                            <div class="item">
+                                <p>Phone<span class="required"></span></p>
+                                <input type="text" name="reference1Phone" formControlName="reference1Phone" />
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="item">
+                                <p>Address<span class="required"></span></p>
+                                <input type="text" name="reference1AddrLine1" placeholder="Street Address"
+                                    formControlName="reference1AddrLine1" />
+                                <input type="text" name="reference1AddrLine2" placeholder="Street Address Line2"
+                                    formControlName="reference1AddrLine2" />
+                                <input type="text" name="reference1AddrCity" placeholder="City"
+                                    formControlName="reference1AddrCity" />
+                                <input type="text" name="reference1AddrState" placeholder="State/Province"
+                                    formControlName="reference1AddrState" />
+                                <input type="text" name="reference1AddrZip" placeholder="Zip"
+                                    formControlName="reference1AddrZip" />
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h6>Reference 2</h6>
+                        <div class="item">
+                            <p>Name<span class="required"></span></p>
+                            <div class="name-item">
+                                <input type="text" name="reference2FirstName" placeholder="First"
+                                    formControlName="reference2FirstName" />
+                                <input type="text" name="reference2LastName" placeholder="Last"
+                                    formControlName="reference2LastName" />
+                            </div>
+                        </div>
+                        <div class="item">
+                            <p>Date of birth<span class="required"></span></p>
+                            <div class="name-item">
+                                <input type="date" name="reference2Dob" placeholder="DD/MM/YYYY"
+                                    formControlName="reference2Dob" />
+                            </div>
+                        </div>
+                        <div class="question">
+                            <p>Gender<span class="required"></span></p>
+                            <div class="question-answer">
+                                <div>
+                                    <input type="radio" value="M" id="radio_13" name="reference2Gender" required
+                                        formControlName="reference2Gender" />
+                                    <label for="radio_13" class="radio"><span>Male</span></label>
+                                    <input type="radio" value="F" id="radio_14" name="reference2Gender" required
+                                        formControlName="reference2Gender" />
+                                    <label for="radio_14" class="radio"><span>Female</span></label>
+                                    <input type="radio" value="O" id="radio_15" name="reference2Gender" required
+                                        formControlName="reference2Gender" />
+                                    <label for="radio_15" class="radio"><span>Other</span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="item">
+                                <p>Email<span class="required"></span></p>
+                                <input type="text" name="reference2Email" formControlName="reference2Email" />
+                            </div>
+                            <div class="item">
+                                <p>Phone<span class="required"></span></p>
+                                <input type="text" name="reference2Phone" formControlName="reference2Phone" />
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="item">
+                                <p>Address<span class="required"></span></p>
+                                <input type="text" name="reference2AddrLine1" placeholder="Street Address"
+                                    formControlName="reference2AddrLine1" />
+                                <input type="text" name="reference2AddrLine2" placeholder="Street Address Line2"
+                                    formControlName="reference2AddrLine2" />
+                                <input type="text" name="reference2AddrCity" placeholder="City"
+                                    formControlName="reference2AddrCity" />
+                                <input type="text" name="reference2AddrState" placeholder="State/Province"
+                                    formControlName="reference2AddrState" />
+                                <input type="text" name="reference2AddrZip" placeholder="Zip"
+                                    formControlName="reference2AddrZip" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn-block">
+                <button type="submit" (click)="saveApplicant()">Apply For The Job</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
